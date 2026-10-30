@@ -22,7 +22,11 @@ Here’s what you're required to implement to bring the game to life:
 ### Game Functionality
 
 - **Update the score**
-  - +1 point for each can clicked  
+  - +1 point for each normal can clicked
+  - +3 points for each golden can clicked; golden cans sparkle and appear from 40% of spawns on Easy down to 6% on Expert
+  - A three-second countdown starts each game before cans appear
+  - Background music cycles between two tracks during the countdown and game, then stops when time runs out
+  - Win, game-over, and wrong-can buzzer sound effects play at the corresponding game events
 
 - **Add a 30-second timer**
   - When the timer reaches 0, the game ends  
@@ -44,4 +48,3 @@ Here’s what you're required to implement to bring the game to life:
 These are the minimum requirements, but if you'd like an additional challenge go ahead and give the LevelUps a shot! For example, you could add logic to decrease the user's score if they miss a jerry can. Have fun and make the game your own!
 
 If you have any questions or need any assistance with your code, reach out to the HelpHub or attend a Drop-In Hour. You got this!!
-

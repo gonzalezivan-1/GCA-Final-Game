@@ -3,20 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Water Quest</title>
+  <title>charity: water - Water Quest</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <div class="container">
-    <h1>Water Quest</h1>
-    <p class="game-instructions">Collect 20 items in 30 seconds to complete the game!</p>
+    <h1>charity: water - Water Quest</h1>
+    <p class="game-instructions">Earn 20 points in 30 seconds to complete the game!</p>
+    <div class="difficulty-control">
+      <label for="difficulty">Difficulty</label>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+        <option value="expert">Expert</option>
+      </select>
+    </div>
     <div class="stats">
-      <p>Cans Collected: <span id="current-cans">0</span></p>
+      <p>Score: <span id="current-cans">0</span></p>
       <p>Time Left: <span id="timer">30</span>s</p>
     </div>
     <div id="celebration" aria-hidden="true"></div>
     <div id="penalty-flash" aria-hidden="true"></div>
-    <div class="game-grid"></div>
+    <div class="game-grid">
+      <div id="countdown" class="countdown" aria-live="assertive" aria-hidden="true"></div>
+    </div>
     <div class="game-controls">
       <button id="start-game">Start Game</button>
       <button id="reset-game" type="button">Reset</button>
@@ -25,6 +36,33 @@
       <p class="message-label">Quest Status</p>
       <p id="achievement-message">Press Start Game to begin!</p>
     </section>
+    <section class="leaderboard" aria-labelledby="leaderboard-title">
+      <div class="leaderboard-heading">
+        <h2 id="leaderboard-title">High Scores</h2>
+        <button id="reset-scores" type="button">Reset Scores</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Player</th>
+            <th scope="col">Score</th>
+          </tr>
+        </thead>
+        <tbody id="high-scores"></tbody>
+      </table>
+      <form id="initials-form" class="initials-form" hidden>
+        <label for="initials">New high score! Enter your initials</label>
+        <div class="initials-entry">
+          <input id="initials" name="initials" type="text" maxlength="3" minlength="3" pattern="[A-Za-z]{3}" autocomplete="off" required>
+          <button type="submit">Save Score</button>
+        </div>
+      </form>
+    </section>
+    <footer class="site-footer">
+      <a href="https://charitywater.org" target="_blank" rel="noopener noreferrer">Learn more</a>
+      <span>charitywater.org</span>
+    </footer>
   </div>
   <script src="script.js"></script>
 </body>
