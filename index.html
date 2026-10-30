@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Water Quest</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Water Quest</h1>
+    <p class="game-instructions">Collect 20 items in 30 seconds to complete the game!</p>
+    <div class="stats">
+      <p>Cans Collected: <span id="current-cans">0</span></p>
+      <p>Time Left: <span id="timer">30</span>s</p>
+    </div>
+    <div id="celebration" aria-hidden="true"></div>
+    <div id="penalty-flash" aria-hidden="true"></div>
+    <div class="game-grid"></div>
+    <div class="game-controls">
+      <button id="start-game">Start Game</button>
+      <button id="reset-game" type="button">Reset</button>
+    </div>
+    <section id="achievements" class="message-panel" aria-live="polite">
+      <p class="message-label">Quest Status</p>
+      <p id="achievement-message">Press Start Game to begin!</p>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

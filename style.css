@@ -1,0 +1,294 @@
+/* Charity: water Brand Colors & Fonts
+
+Primary Colors:
+- Yellow:     #FFC907
+- Blue:       #2E9DF7
+
+Secondary Colors:
+- Light Blue: #8BD1CB
+- Green:      #4FCB53
+- Orange:     #FF902A
+- Red:        #F5402C
+- Dark Green: #159A48
+- Pink:       #F16061
+
+Fonts:
+- Proxima Nova
+- Avenir
+
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  margin: 0;
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #fffaf0 0%, #fff4b8 100%);
+  color: #554d3a;
+}
+
+.container {
+  max-width: 750px;
+  margin: 40px auto;
+  background-color: rgba(255, 252, 238, 0.96);
+  padding: 40px;
+  border: 1px solid #ecd98a;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(145, 124, 56, 0.16);
+}
+
+h1 {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #74610d;
+}
+
+h1 img {
+  height: 50px;
+  margin-right: 15px;
+  display: block;
+}
+
+.game-instructions {
+  font-size: 17px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #756c50;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 24px;
+  background-color: #fff2b7;
+  border: 1px solid #e8d27d;
+  padding: 15px 0;
+  border-radius: 8px;
+}
+
+.stats p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.grid-cell {
+  background-color: #fff8cf;
+  border-radius: 8px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.water-can-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  /* Ensure the wrapper is properly centered */
+}
+
+.water-can {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+  animation: popUp 0.5s cubic-bezier(0.17, 0.67, 0.34, 2);
+  transform-origin: center;
+}
+
+.penalty-can {
+  filter: sepia(1) saturate(12) hue-rotate(315deg) brightness(0.9);
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0.5); /* Start scaling from the center */
+  }
+  100% {
+    transform: scale(1); /* End scaling at full size */
+  }
+}
+
+
+button {
+  background-color: #e6bc2f;
+  color: #51450f;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+#reset-game {
+  background-color: #fff6c8;
+  border: 1px solid #d8bf61;
+}
+
+button:hover {
+  filter: brightness(0.92);
+}
+
+#penalty-flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: rgba(220, 38, 38, 0.55);
+  opacity: 0;
+}
+
+#penalty-flash.active {
+  animation: penaltyFlash 300ms ease-out;
+}
+
+@keyframes penaltyFlash {
+  0%, 100% { opacity: 0; }
+  20%, 65% { opacity: 1; }
+}
+
+#celebration {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0;
+}
+
+#celebration.active {
+  opacity: 1;
+}
+
+.celebration-drop {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 18px;
+  border-radius: 2px;
+  background: #FFC907;
+  animation-name: celebrationFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.celebration-drop:nth-child(3n) {
+  background: #2E9DF7;
+}
+
+.celebration-drop:nth-child(3n + 1) {
+  background: #4FCB53;
+}
+
+@keyframes celebrationFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(720deg); }
+}
+
+.loss-rain {
+  background: rgba(74, 96, 126, 0.08);
+}
+
+.rain-drop {
+  position: absolute;
+  top: -30px;
+  width: 2px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, transparent, #6d96b8);
+  animation-name: rainFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rainFall {
+  0% { transform: translateY(0) rotate(8deg); }
+  100% { transform: translateY(110vh) rotate(8deg); }
+}
+
+.message-panel {
+  width: min(500px, 100%);
+  min-height: 96px;
+  margin: 24px auto 0;
+  padding: 18px 22px;
+  text-align: center;
+  background-color: #fff7ce;
+  border: 2px solid #ead783;
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(145, 124, 56, 0.12);
+}
+
+.message-label {
+  margin: 0 0 6px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #9a8650;
+}
+
+.message-panel p:last-child {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.message-panel.playing {
+  border-style: dashed;
+}
+
+.message-panel.win {
+  background-color: #fff0a4;
+  border-color: #d7ad28;
+  color: #65520a;
+}
+
+.message-panel.lose {
+  background-color: #fff9df;
+  border-color: #cbbd78;
+  color: #665f49;
+}
+
+@media (max-width: 600px) {
+  body { padding: 12px; }
+  .container { margin: 12px auto; padding: 24px 16px; }
+  h1 { font-size: 30px; }
+  .game-grid { gap: 8px; }
+  .stats { gap: 8px; }
+  .stats p { font-size: 15px; }
+  .water-can-wrapper { width: 58px; height: 58px; }
+  .game-controls { flex-wrap: wrap; }
+}
